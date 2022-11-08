@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    background-color: rgb(7, 51, 7);
+    margin-right: 50px;
+    margin-left: 50px;
+}
+.container{
+    font-size: 18px;
+    background-color: #ffffff;
+    width: 85vw;
+    max-width: 34em;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    padding: 2em;
+    border-radius: 1em;
+    box-shadow: 0 1em 2em .5em rgb(1, 12, 1);
+    text-align: center;
+}
+#option-cont div{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 1em 0 2em 0;
+}
