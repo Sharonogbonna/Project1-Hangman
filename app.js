@@ -1,5 +1,15 @@
+//Setting the variables to html
+const lettersContainer = document.getElementById('letter-cont');
+const topicsContainer = document.getElementById('topics-cont');
+const userInputSection = document.getElementById('user-input-sec');
+const newGameContain = document.getElementById('newgame-cont');
+const newGameButton = document.getElementById('newgame-button');
+const canvas = document.getElementById('canvas');
+const resultText = document.getElementById('results');
+
+
 //Topic options for the game
-let options = {
+let topics = {
     neuroanatomy: [
         'Dendron',
         'Neuron', 
@@ -33,3 +43,25 @@ let options = {
     ]
 }
 
+
+const displayOptionButtons = () => {
+    topicsContainer.innerHTML += `<p>Please Select a Topic</p>`;
+    let topicCont = document.createElement('div');
+    for(let topic in topics){
+        topicCont.innerHTML += `<button class="topics" onclick="chooseWord('${topic}')">${topic}</button>`;
+    }
+topicsContainer.appendChild(topicCont);
+}
+
+const chooseWord = (chosenTopicWord) => {
+    let topicButtons = document.querySelectorAll('.topics');
+    topicButtons.forEach(function (button) {
+        if(button.innerText.toLowerCase() === chosenTopicWord){
+            button.classList.add('active');
+        }button.disabled = true;
+    })
+}
+
+
+
+displayOptionButtons()
