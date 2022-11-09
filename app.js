@@ -43,8 +43,12 @@ let topics = {
     ]
 }
 
+//other declarations
+let chosenWord = '';
+let winCount = 0;
+let count = 0;
 
-const displayOptionButtons = () => {
+const displayTopicButtons = () => {
     topicsContainer.innerHTML += `<p>Please Select a Topic</p>`;
     let topicCont = document.createElement('div');
     for(let topic in topics){
@@ -52,14 +56,47 @@ const displayOptionButtons = () => {
     }
 topicsContainer.appendChild(topicCont);
 }
-
-const chooseWord = (chosenTopicWord) => {
+//generate word for topic selected
+const chooseWord = (topicValue) => {
     let topicButtons = document.querySelectorAll('.topics');
     topicButtons.forEach(function (button) {
-        if(button.innerText.toLowerCase() === chosenTopicWord){
+        if(button.innerText.toLowerCase() === topicValue){
             button.classList.add('active');
         }button.disabled = true;
-    })
-}
+    });
+};
 
-displayOptionButtons()
+//runs when game is loaded and when player clicks new game
+const initiateGame = () => {
+    winCount = 0;
+    count = 0;
+    //creating letter buttons
+    for(let i = 65; i <91; i++){
+      let button = document.createElement('button');
+      button.classList.add("letters");  
+      button.innerText = String.fromCharCode(i);
+      lettersContainer.append(button);
+    };
+
+    displayTopicButtons();
+};
+newGameButton.addEventListener("click", initiateGame);
+window.onload = initiateGame;
+
+
+
+// //hide letters and clear out words
+// lettersContainer.classList.remove("hide");
+// userInputSection.innerText = "";
+
+// let topicArray = topics[topicValue];
+// //randomly select word
+//  chosenWord = topicArray[Math.floor(Math.random() *topicArray.length)]
+//  chosenWord = chooseWord.toUpperCase()
+// console.log(chooseWord)
+
+// let displayWord = chosenWord.replace(/./g, '<span class="dashes">_</span>');
+
+// //display as dashes
+// userInputSection.innerHTML = displayWord
+
