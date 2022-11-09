@@ -102,15 +102,25 @@ userInputSection.innerHTML = displayWord
 };
 const updateWord = () => {
     displayWord = '';
+    winCount = 0;
     for(let i = 0; i < chosenWord.length; i++){
         if(guessedLetters.includes(chosenWord[i])){
             displayWord += chosenWord[i];
+
         }else if (chosenWord[i]=== ' '){
             displayWord += ' ';
+
         }else{
-            displayWord += '_'
+            displayWord += '_';
         }
     }
+    
+    let filteredWord = displayWord.split('').filter(letter => (letter != ' ' && letter != '_'))
+    filteredWord = filteredWord.join('')
+    if (filteredWord.length == chosenWord.length){
+        console.log('You Win!')
+    }
+    console.log(filteredWord)
     userInputSection.innerHTML = displayWord
     console.log(displayWord)
     return displayWord
@@ -134,7 +144,8 @@ const initiateGame = () => {
       button.addEventListener('click', function(e){
         guessedLetters.push(button.innerText)
         console.log(guessedLetters)
-        updateWord()
+        updateWord();
+        console.log(winCount)
       })
       lettersContainer.append(button);
     };
