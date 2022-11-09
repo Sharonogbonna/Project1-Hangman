@@ -14,37 +14,40 @@ let topics = {
         'Dendron',
         'Neuron', 
         'Synapse',
-        'nodes of Ranvier',
+        'nodes  of  Ranvier',
         'Axon',
-        'Cerebral Cortex',
-        'Central Nervous System',
+        'Cerebral  Cortex',
+        'Central  Nervous  System',
         'Brain',
-        'Pia Mater',
+        'Pia  Mater',
         'Amygdala',
         'Soma',
-        'Blood Brain Barrier',
+        'Blood  Brain  Barrier',
         'Myelin Sheath'
     ],
     cooking: [
         'Spatula',
-        'Sauce Pan',
+        'Sauce  Pan',
         'Pot',
         'Tongs',
         'Ladle',
-        "Chef's Knife",
-        'Cutting Board', 
-        'Cheese Grater', 
+        "Chef's  Knife",
+        'Cutting  Board', 
+        'Cheese  Grater', 
         'Peeler', 
         'Tenderizer',
-        'Pizza Cutter',
+        'Pizza  Cutter',
         'Mezzaluna',
-        'Bench Scraper',
+        'Bench  Scraper',
         'Sifter'
     ]
 }
 
 //other declarations
 let chosenWord = '';
+let maxWrong = 7;
+let guessed = [];
+let displayWord = null;
 let winCount = 0;
 let count = 0;
 
@@ -89,6 +92,12 @@ const chooseWord = (topicValue) => {
     chosenWord = topicArray[Math.floor(Math.random() *topicArray.length)]
     chosenWord = chosenWord.toUpperCase()
     console.log(chosenWord)
+    //replace letters with dashes 
+    displayWord = chosenWord.replace(/[^ ]/g, '_');
+    //may need to alter because of <span class="dashes">_</span>
+//display as dashes
+userInputSection.innerHTML = displayWord
+
 };
 
 //runs when game is loaded and when player clicks new game
@@ -110,8 +119,4 @@ window.onload = initiateGame;
 
 
 
-// let displayWord = chosenWord.replace(/./g, '<span class="dashes">_</span>');
-
-// //display as dashes
-// userInputSection.innerHTML = displayWord
 

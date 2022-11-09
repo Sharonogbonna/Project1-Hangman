@@ -88,3 +88,11 @@ body{
 .hide{
 display: none;
 }
+
+#user-input-sec{
+    display: flex;
+    justify-content: center;
+    font-size: 1.8em;
+    margin: .5em 0 1em 0;
+    color:rgb(4, 37, 4);
+}
