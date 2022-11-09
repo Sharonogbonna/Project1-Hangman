@@ -46,7 +46,7 @@ let topics = {
 //other declarations
 let chosenWord = '';
 let maxWrong = 7;
-let guessed = [];
+let guessedLetters = [];
 let displayWord = null;
 let winCount = 0;
 let count = 0;
@@ -83,7 +83,7 @@ const chooseWord = (topicValue) => {
             button.classList.add('active');
         }button.disabled = true;
     });
-    //hide all letters at teh beginning and clear the previous word.
+    //unhide all letters once the topic is chosen
     lettersContainer.classList.remove('hide');
     userInputSection.innerText = '';
 
@@ -93,22 +93,49 @@ const chooseWord = (topicValue) => {
     chosenWord = chosenWord.toUpperCase()
     console.log(chosenWord)
     //replace letters with dashes 
-    displayWord = chosenWord.replace(/[^ ]/g, '_');
+    updateWord()
+    // displayWord = chosenWord.replace(/[^ ]/g, '_');
     //may need to alter because of <span class="dashes">_</span>
 //display as dashes
 userInputSection.innerHTML = displayWord
 
 };
-
-//runs when game is loaded and when player clicks new game
+const updateWord = () => {
+    displayWord = '';
+    for(let i = 0; i < chosenWord.length; i++){
+        if(guessedLetters.includes(chosenWord[i])){
+            displayWord += chosenWord[i];
+        }else if (chosenWord[i]=== ' '){
+            displayWord += ' ';
+        }else{
+            displayWord += '_'
+        }
+    }
+    userInputSection.innerHTML = displayWord
+    console.log(displayWord)
+    return displayWord
+}
+//runs when page is loaded and when player clicks new game
 const initiateGame = () => {
     winCount = 0;
     count = 0;
+    //remove previously chosen word, content and hide new game button and letters
+    userInputSection.innerHTML = '';
+    topicsContainer.innerHTML = '';
+    lettersContainer.innerHTML = '';
+    newGameContainer.classList.add('hide');
+    lettersContainer.classList.add('hide');
+
     //creating letter buttons
     for(let i = 65; i <91; i++){
       let button = document.createElement('button');
       button.classList.add("letters");  
       button.innerText = String.fromCharCode(i);
+      button.addEventListener('click', function(e){
+        guessedLetters.push(button.innerText)
+        console.log(guessedLetters)
+        updateWord()
+      })
       lettersContainer.append(button);
     };
 
