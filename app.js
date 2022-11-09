@@ -25,7 +25,7 @@ let topics = {
         'Blood Brain Barrier',
         'Myelin Sheath'
     ],
-    kitchenUtensils: [
+    cooking: [
         'Spatula',
         'Sauce Pan',
         'Pot',
@@ -61,7 +61,5 @@ const chooseWord = (chosenTopicWord) => {
         }button.disabled = true;
     })
 }
-
-
 
 displayOptionButtons()
