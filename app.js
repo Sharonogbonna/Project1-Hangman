@@ -2,7 +2,7 @@
 const lettersContainer = document.getElementById('letter-cont');
 const topicsContainer = document.getElementById('topics-cont');
 const userInputSection = document.getElementById('user-input-sec');
-const newGameContain = document.getElementById('newgame-cont');
+const newGameContainer = document.getElementById('newgame-cont');
 const newGameButton = document.getElementById('newgame-button');
 const canvas = document.getElementById('canvas');
 const resultText = document.getElementById('results');
@@ -56,6 +56,22 @@ const displayTopicButtons = () => {
     }
 topicsContainer.appendChild(topicCont);
 }
+
+//Block all of the buttons
+const blocker = () => {
+    let topicButtons = document.querySelectorAll('.topics');
+    let letterButtons = querySelectorAll('.letters');
+    //disable topics
+    topicButtons.forEach(function (button){
+        button.disabled = true;
+    });
+    //disable letters
+    letterButtons.forEach(function (button){
+        button.disabled.true;
+    });
+    newGameContainer.classList.remove('hide');
+};
+ 
 //generate word for topic selected
 const chooseWord = (topicValue) => {
     let topicButtons = document.querySelectorAll('.topics');
@@ -64,6 +80,15 @@ const chooseWord = (topicValue) => {
             button.classList.add('active');
         }button.disabled = true;
     });
+    //hide all letters at teh beginning and clear the previous word.
+    lettersContainer.classList.remove('hide');
+    userInputSection.innerText = '';
+
+    let topicArray = topics[topicValue];
+    //randomly select word
+    chosenWord = topicArray[Math.floor(Math.random() *topicArray.length)]
+    chosenWord = chosenWord.toUpperCase()
+    console.log(chosenWord)
 };
 
 //runs when game is loaded and when player clicks new game
@@ -84,16 +109,6 @@ newGameButton.addEventListener("click", initiateGame);
 window.onload = initiateGame;
 
 
-
-// //hide letters and clear out words
-// lettersContainer.classList.remove("hide");
-// userInputSection.innerText = "";
-
-// let topicArray = topics[topicValue];
-// //randomly select word
-//  chosenWord = topicArray[Math.floor(Math.random() *topicArray.length)]
-//  chosenWord = chooseWord.toUpperCase()
-// console.log(chooseWord)
 
 // let displayWord = chosenWord.replace(/./g, '<span class="dashes">_</span>');
 
