@@ -118,10 +118,11 @@ body{
     margin-bottom: 50px;
 }
 #results h2.lose-msg{
-    color: rgb(83, 21, 35);
+    color: rgb(136, 15, 43);
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
+    margin-bottom: 50px;
 }
 #results span{
     font-weight: bold;

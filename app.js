@@ -6,7 +6,7 @@ const newGameContainer = document.getElementById("newgame-cont");
 const newGameButton = document.getElementById("newgame-button");
 const canvas = document.getElementById("canvas");
 const resultText = document.getElementById("results");
-const guessTracker = document.getElementById("guess-tracker")
+const guessTracker = document.getElementById("guess-tracker");
 
 //Topic options for the game
 let topics = {
@@ -41,17 +41,17 @@ let topics = {
     "Bench  Scraper",
     "Sifter",
   ],
-//   holiday: []
+  //   holiday: []
 };
 
 //other declarations
 let chosenWord = "";
 let guessedLetters = [];
-let wrongLetters = []
+let wrongLetters = [];
 let displayWord = null;
 let winCount = 0;
+let maxWrong = 5
 let count = 0;
-
 
 const displayTopicButtons = () => {
   topicsContainer.innerHTML += `<p>Please Select a Topic</p>`;
@@ -101,15 +101,15 @@ const chooseWord = (topicValue) => {
   userInputSection.innerHTML = displayWord;
 };
 const showLoss = () => {
-    console.log('You Lost!');
-    resultText.innerHTML = `<h2 class="lose-msg"> You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`;
-    blocker();
-}
+  console.log("You Lost!");
+  resultText.innerHTML = `<h2 class="lose-msg"> You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`;
+  blocker();
+};
 const showWin = () => {
-    console.log("You Win!");
-    resultText.innerHTML = `<h2 class="win-msg"> You win!!</h2><p>The word was <span>${chosenWord}</span></p>`;
-    blocker();
-}
+  console.log("You Win!");
+  resultText.innerHTML = `<h2 class="win-msg"> You win!!</h2><p>The word was <span>${chosenWord}</span></p>`;
+  blocker();
+};
 
 //runs when page is loaded and when player clicks new game
 const initiateGame = () => {
@@ -148,24 +148,31 @@ const initiateGame = () => {
           displayWord += "_";
         }
       }
-      let filteredWord = displayWord.split("").filter((letter) => letter != " " && letter != "_");
+      let filteredWord = displayWord
+        .split("")
+        .filter((letter) => letter != " " && letter != "_");
       filteredWord = filteredWord.join("");
-      if(displayWord.includes(' ')){
-        if(displayWord.replace(/\s/g, '').length == winCount){
-            showWin()
+      if (displayWord.includes(" ")) {
+        if (displayWord.replace(/\s/g, "").length == winCount) {
+          showWin();
         }
-      }
-      else if(filteredWord.length == displayWord.length){
+      } else if (filteredWord.length == displayWord.length) {
         showWin();
       }
       //make lose case
-        if(!chosenWord.includes(e.target.innerText)){
-            wrongLetters.push(button.innerText)
-        }
-   
+      if (!chosenWord.includes(e.target.innerText)) {
+        wrongLetters.push(button.innerText);
+      }
+      if(displayWord.replace(/\s/g, "").length <= 6){
+        maxWrong = 3
+      }
+      if(wrongLetters.length == maxWrong){
+        showLoss()
+      }
+
       userInputSection.innerHTML = displayWord;
-      console.log(`Guessed: ${guessedLetters}`)
-      console.log(`Wrong: ${wrongLetters}`)
+      console.log(`Guessed: ${guessedLetters}`);
+      console.log(`Wrong: ${wrongLetters}`);
       button.disabled = true;
     });
     lettersContainer.append(button);
