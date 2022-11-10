@@ -97,8 +97,7 @@ body{
     justify-content: center;
     flex-direction: column;
     border-radius: .5em;
-    opacity: 85%;
-
+    opacity: 90%;
 }
 .hide{
 display: none;

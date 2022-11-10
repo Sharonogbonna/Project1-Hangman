@@ -99,13 +99,16 @@ const chooseWord = (topicValue) => {
 };
 const showLoss = () => {
     console.log('You Lost!')
-    resultText.innerHTML = `<h2 class="lose-msg'> You Lose!!<p>The word was <span>${chosenWord}</span></p>`
+    resultText.innerHTML = `<h2 class="lose-msg'> You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`
     blocker()
 }
 const showWin = () => {
     console.log("You Win!");
-    resultText.innerHTML = `<h2 class="win-msg'> You win!!<p>The word was <span>${chosenWord}</span></p>`
-    blocker()
+    blocker();
+    resultText.innerHTML = `<h2 class="win-msg'> You win!!</h2><p>The word was <span>${chosenWord}</span></p></`
+}
+const updateWrongGuess = () => {
+    
 }
 //runs when page is loaded and when player clicks new game
 const initiateGame = () => {
@@ -155,8 +158,7 @@ const initiateGame = () => {
         showWin();
       }
       userInputSection.innerHTML = displayWord;
-    //   console.log(`filered word length: ${filteredWord.length}, display word length: ${displayWord.length}, win count: ${winCount}`)
-    //   console.log(displayWord.replace(/\s/g, '').length)
+    
       button.disabled = true;
     });
     lettersContainer.append(button);
