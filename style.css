@@ -43,7 +43,7 @@ body{
     border: 2px solid rgb(177, 140, 91);
     color: rgb(177, 140, 91);
     border-radius: 1em;
-    box-shadow: 0 .25em .5em .125em rgb(83, 71, 57);
+    box-shadow: 0 .25em .25em rgb(83, 71, 57);
 }
 #topics-cont button:disabled{
     border: 2px solid tan;
@@ -72,15 +72,18 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 .125em .25em rgb(83, 71, 57);
 }
 #letter-cont button:disabled{
     border: 1px dashed tan;
     color: rgb(169, 184, 169);
     background-color: #ffffff;
+    box-shadow: none;
 }
 #letter-cont button:disabled.inWord{
     background-color: rgb(169, 184, 169);
-    color: #ffffff
+    color: #ffffff;
+    box-shadow: none;
 }
 .newgame-popup{
     background-color: #ffffff;
