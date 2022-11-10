@@ -45,6 +45,7 @@ let topics = {
 //other declarations
 let chosenWord = "";
 let guessedLetters = [];
+let wrongLetters = []
 let displayWord = null;
 let winCount = 0;
 let count = 0;
@@ -99,17 +100,15 @@ const chooseWord = (topicValue) => {
 };
 const showLoss = () => {
     console.log('You Lost!')
-    resultText.innerHTML = `<h2 class="lose-msg'> You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`
+    resultText.innerHTML = `<h2 class="lose-msg"> You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`
     blocker()
 }
 const showWin = () => {
     console.log("You Win!");
+    resultText.innerHTML = `<h2 class="win-msg"> You win!!</h2><p>The word was <span>${chosenWord}</span></p>`
     blocker();
-    resultText.innerHTML = `<h2 class="win-msg'> You win!!</h2><p>The word was <span>${chosenWord}</span></p></`
 }
-const updateWrongGuess = () => {
-    
-}
+
 //runs when page is loaded and when player clicks new game
 const initiateGame = () => {
   winCount = 0;
@@ -148,7 +147,6 @@ const initiateGame = () => {
       }
       let filteredWord = displayWord.split("").filter((letter) => letter != " " && letter != "_");
       filteredWord = filteredWord.join("");
-      //working for single words but not for words with spaces
       if(displayWord.includes(' ')){
         if(displayWord.replace(/\s/g, '').length == winCount){
             showWin()

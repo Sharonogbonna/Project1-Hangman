@@ -48,11 +48,13 @@ body{
 #topics-cont button:disabled{
     border: 2px solid tan;
     color: rgb(169, 184, 169);
+    box-shadow: none;
 }
 #topics-cont button.active{
     border: 3px dashed rgb(4, 37, 4);
     background-color: rgb(152, 117, 84);
     color:#ffffff;
+    box-shadow: none;
 }
 
 .letters-cont{
@@ -98,6 +100,36 @@ body{
     flex-direction: column;
     border-radius: .5em;
     opacity: 90%;
+}
+#newgame-button{
+    background-color: rgb(83, 71, 57);
+    color: #ffffff;
+    box-shadow: 0 .125em .25em rgb(1, 12, 1);
+    width: 150px;
+    height: 50px;
+    border-radius: 1em;
+    border: 2px double orange;
+}
+#results h2.win-msg{
+    color: rgb(21, 83, 21);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 50px;
+}
+#results h2.lose-msg{
+    color: rgb(83, 21, 35);
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+#results span{
+    font-weight: bold;
+    color: rgb(152, 117, 84);
+    font-style: italic;
+}
+#results p{
+    margin-bottom: 50px;
 }
 .hide{
 display: none;
