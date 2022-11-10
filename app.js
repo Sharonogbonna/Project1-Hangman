@@ -31,7 +31,7 @@ let topics = {
         'Pot',
         'Tongs',
         'Ladle',
-        "Chef's  Knife",
+        "Chefs  Knife",
         'Cutting  Board', 
         'Cheese  Grater', 
         'Peeler', 
@@ -45,7 +45,7 @@ let topics = {
 
 //other declarations
 let chosenWord = '';
-let maxWrong = 7;
+let maxWrong = 6;
 let guessedLetters = [];
 let displayWord = null;
 let winCount = 0;
@@ -55,7 +55,7 @@ const displayTopicButtons = () => {
     topicsContainer.innerHTML += `<p>Please Select a Topic</p>`;
     let topicCont = document.createElement('div');
     for(let topic in topics){
-        topicCont.innerHTML += `<button class="topics" onclick="chooseWord('${topic}')">${topic}</button>`;
+        topicCont.innerHTML += `<button id="${topic}"class="topics" onclick="chooseWord('${topic}')">${topic}</button>`;
     }
 topicsContainer.appendChild(topicCont);
 }
@@ -63,7 +63,7 @@ topicsContainer.appendChild(topicCont);
 //Block all of the buttons
 const blocker = () => {
     let topicButtons = document.querySelectorAll('.topics');
-    let letterButtons = querySelectorAll('.letters');
+    let letterButtons = document.querySelectorAll('.letters');
     //disable topics
     topicButtons.forEach(function (button){
         button.disabled = true;
@@ -93,38 +93,40 @@ const chooseWord = (topicValue) => {
     chosenWord = chosenWord.toUpperCase()
     console.log(chosenWord)
     //replace letters with dashes 
-    updateWord()
-    // displayWord = chosenWord.replace(/[^ ]/g, '_');
+    
+    displayWord = chosenWord.replace(/[^ ]/g, '_');
     //may need to alter because of <span class="dashes">_</span>
 //display as dashes
 userInputSection.innerHTML = displayWord
 
 };
-const updateWord = () => {
-    displayWord = '';
-    winCount = 0;
-    for(let i = 0; i < chosenWord.length; i++){
-        if(guessedLetters.includes(chosenWord[i])){
-            displayWord += chosenWord[i];
-
-        }else if (chosenWord[i]=== ' '){
-            displayWord += ' ';
-
-        }else{
-            displayWord += '_';
-        }
-    }
+// const updateWord = () => {
+//     displayWord = '';
+//     winCount = 0;
+//     for(let i = 0; i < chosenWord.length; i++){
+//         if(guessedLetters.includes(chosenWord[i])){
+//             displayWord += chosenWord[i];
+//             winCount += 1
+//         }else if (chosenWord[i]=== ' '){
+//             displayWord += ' ';
+//         }else{
+//             displayWord += '_';
+//         }
+//     }
     
-    let filteredWord = displayWord.split('').filter(letter => (letter != ' ' && letter != '_'))
-    filteredWord = filteredWord.join('')
-    if (filteredWord.length == chosenWord.length){
-        console.log('You Win!')
-    }
-    console.log(filteredWord)
-    userInputSection.innerHTML = displayWord
-    console.log(displayWord)
-    return displayWord
-}
+//     let filteredWord = displayWord.split('').filter(letter => (letter != ' ' && letter != '_'))
+//     filteredWord = filteredWord.join('')
+//     //working for single words but not for words with spaces
+//     if (filteredWord.length == displayWord.length){
+//         console.log('You Win!');
+//         resultText.innerHTML = (`<h2 class="win-msg'> You win!!<p>The word was <span>${chosenWord}</span></p>`);
+//         blocker()
+//     }
+//     console.log(filteredWord)
+//     userInputSection.innerHTML = displayWord
+//     console.log(displayWord)
+//     return displayWord
+// }
 //runs when page is loaded and when player clicks new game
 const initiateGame = () => {
     winCount = 0;
@@ -144,8 +146,37 @@ const initiateGame = () => {
       button.addEventListener('click', function(e){
         guessedLetters.push(button.innerText)
         console.log(guessedLetters)
-        updateWord();
+        //updateWord();
+    displayWord = '';
+    winCount = 0;
+    for(let i = 0; i < chosenWord.length; i++){
+        if(guessedLetters.includes(chosenWord[i])){
+            displayWord += chosenWord[i];
+            winCount += 1
+            if(chosenWord.includes(guessedLetters[guessedLetters.length - 1])){
+                button.classList.add('inWord')
+            }
+        }else if (chosenWord[i]=== ' '){
+            displayWord += ' ';
+        }else{
+            displayWord += '_';
+        }
+    }
+    let filteredWord = displayWord.split('').filter(letter => (letter != ' ' && letter != '_'))
+    filteredWord = filteredWord.join('')
+    //working for single words but not for words with spaces
+    if (filteredWord.length == displayWord.length){
+        console.log('You Win!');
+        resultText.innerHTML = (`<h2 class="win-msg'> You win!!<p>The word was <span>${chosenWord}</span></p>`);
+        blocker()
+    }
+    console.log(filteredWord)
+    userInputSection.innerHTML = displayWord
+    console.log(displayWord)
+   
+
         console.log(winCount)
+        button.disabled = true;
       })
       lettersContainer.append(button);
     };

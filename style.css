@@ -51,7 +51,7 @@ body{
 }
 #topics-cont button.active{
     border: 3px dashed rgb(4, 37, 4);
-    background-color: rgb(177, 140, 91);
+    background-color: rgb(152, 117, 84);
     color:#ffffff;
 }
 
@@ -65,14 +65,23 @@ body{
 #letter-cont button{
     height: 2.5em;
     width: 2.5em;
-    background-color: #ffffff;
+    color: #ffffff;
+    background-color: rgb(152, 117, 84);
     border-radius: .25em;
-    border: 1px solid rgb(177, 140, 91);
+    border: 1px solid rgb(4, 37, 4);
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
+#letter-cont button:disabled{
+    border: 1px dashed tan;
+    color: rgb(169, 184, 169);
+    background-color: #ffffff;
+}
+#letter-cont button:disabled.inWord{
+    background-color: rgb(169, 184, 169);
+    color: #ffffff
+}
 .newgame-popup{
     background-color: #ffffff;
     position: absolute;
