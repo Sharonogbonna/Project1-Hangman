@@ -1,3 +1,4 @@
+//#region Declarations
 //Setting the variables to html
 const lettersContainer = document.getElementById("letter-cont");
 const topicsContainer = document.getElementById("topics-cont");
@@ -50,9 +51,15 @@ let guessedLetters = [];
 let wrongLetters = [];
 let displayWord = null;
 let winCount = 0;
-let maxWrong = 5
-let count = 0;
+let maxWrong = null
+//#endregion
 
+//#region Display number of wrong guess
+const displayGuessTracker = () => {
+    guessTracker.innerHTML = `<p><strong>Wrong Guesses:</strong> <span>${wrongLetters.length}</span> of ${maxWrong}</p>`
+}
+
+//#region Display topics and blocker
 const displayTopicButtons = () => {
   topicsContainer.innerHTML += `<p>Please Select a Topic</p>`;
   let topicCont = document.createElement("div");
@@ -76,7 +83,22 @@ const blocker = () => {
   });
   newGameContainer.classList.remove("hide");
 };
+//#endregion
 
+//#region Show win or loss
+const showLoss = () => {
+    console.log("You Lose!");
+    resultText.innerHTML = `<h2 class="lose-msg"> You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`;
+    blocker();
+  };
+  const showWin = () => {
+    console.log("You Win!");
+    resultText.innerHTML = `<h2 class="win-msg"> You win!!</h2><p>The word was <span>${chosenWord}</span></p>`;
+    blocker();
+  };
+//#endregion
+
+//#region Generate word 
 //generate word for topic selected
 const chooseWord = (topicValue) => {
   let topicButtons = document.querySelectorAll(".topics");
@@ -88,6 +110,7 @@ const chooseWord = (topicValue) => {
   });
   //unhide all letters once the topic is chosen
   lettersContainer.classList.remove("hide");
+  guessTracker.classList.remove('hide');
   userInputSection.innerText = "";
 
   let topicArray = topics[topicValue];
@@ -100,30 +123,22 @@ const chooseWord = (topicValue) => {
   //display as dashes
   userInputSection.innerHTML = displayWord;
 };
-const showLoss = () => {
-  console.log("You Lost!");
-  resultText.innerHTML = `<h2 class="lose-msg"> You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`;
-  blocker();
-};
-const showWin = () => {
-  console.log("You Win!");
-  resultText.innerHTML = `<h2 class="win-msg"> You win!!</h2><p>The word was <span>${chosenWord}</span></p>`;
-  blocker();
-};
+//#endregion
 
+//#region Initiate Game
 //runs when page is loaded and when player clicks new game
 const initiateGame = () => {
   winCount = 0;
-  count = 0;
+  guessedLetters = [];
+  wrongLetters = [];
   //remove previously chosen word, content and hide new game button and letters
   userInputSection.innerHTML = "";
   topicsContainer.innerHTML = "";
   lettersContainer.innerHTML = "";
+  guessTracker.innerHTML = '';
   newGameContainer.classList.add("hide");
   lettersContainer.classList.add("hide");
-  guessedLetters = [];
-  wrongLetters = [];
-
+  guessTracker.classList.add('hide');
   //creating letter buttons
   for (let i = 65; i < 91; i++) {
     let button = document.createElement("button");
@@ -131,8 +146,7 @@ const initiateGame = () => {
     button.innerText = String.fromCharCode(i);
     button.addEventListener("click", function (e) {
       guessedLetters.push(button.innerText);
-      console.log(guessedLetters);
-
+    //updating word as letter are correctly guessed
       displayWord = "";
       winCount = 0;
       for (let i = 0; i < chosenWord.length; i++) {
@@ -148,6 +162,7 @@ const initiateGame = () => {
           displayWord += "_";
         }
       }
+      //set win condition
       let filteredWord = displayWord
         .split("")
         .filter((letter) => letter != " " && letter != "_");
@@ -165,20 +180,24 @@ const initiateGame = () => {
       }
       if(displayWord.replace(/\s/g, "").length <= 6){
         maxWrong = 3
+        displayGuessTracker()
+      }else if(displayWord.replace(/\s/g, "").length > 6 && displayWord.replace(/\s/g, "").length <= 15){
+        maxWrong = 5
+        displayGuessTracker()
+      }else{
+        maxWrong = 7
+        displayGuessTracker()
       }
       if(wrongLetters.length == maxWrong){
         showLoss()
       }
-
       userInputSection.innerHTML = displayWord;
-      console.log(`Guessed: ${guessedLetters}`);
-      console.log(`Wrong: ${wrongLetters}`);
       button.disabled = true;
     });
     lettersContainer.append(button);
   }
-
   displayTopicButtons();
 };
+//#endregion
 newGameButton.addEventListener("click", initiateGame);
 window.onload = initiateGame;

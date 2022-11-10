@@ -23,6 +23,14 @@ body{
     border-radius: .5em;
     box-shadow: 0 1em 2em .5em rgb(1, 12, 1);
 }
+#guess-tracker{
+    text-align: right;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+#guess-tracker span{
+    color: rgb(136, 15, 43)
+}
 .title{
     text-align: center;
 }
