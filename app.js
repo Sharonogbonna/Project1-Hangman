@@ -54,11 +54,6 @@ let winCount = 0;
 let maxWrong = null
 //#endregion
 
-//#region Display number of wrong guess
-const displayGuessTracker = () => {
-    guessTracker.innerHTML = `<p><strong>Wrong Guesses:</strong> <span>${wrongLetters.length}</span> of ${maxWrong}</p>`
-}
-
 //#region Display topics and blocker
 const displayTopicButtons = () => {
   topicsContainer.innerHTML += `<p>Please Select a Topic</p>`;
@@ -85,7 +80,7 @@ const blocker = () => {
 };
 //#endregion
 
-//#region Show win or loss
+//#region Show win, loss, and number of wrong guess
 const showLoss = () => {
     console.log("You Lose!");
     resultText.innerHTML = `<h2 class="lose-msg"> You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`;
@@ -96,6 +91,9 @@ const showLoss = () => {
     resultText.innerHTML = `<h2 class="win-msg"> You win!!</h2><p>The word was <span>${chosenWord}</span></p>`;
     blocker();
   };
+const displayGuessTracker = () => {
+    guessTracker.innerHTML = `<p><strong>Wrong Guesses:</strong> <span>${wrongLetters.length}</span> of ${maxWrong}</p>`
+}
 //#endregion
 
 //#region Generate word 
