@@ -12,6 +12,7 @@ const modalContainer = document.getElementById('modal-cont')
 let modal = document.getElementById("myModal");
 let btn = document.getElementById("guess-button");
 let span = document.getElementsByClassName("close")[0];
+let submitButton = document.getElementById('submit')
 
 
 //Topic options for the game
@@ -116,6 +117,13 @@ const showLoss = () => {
     blocker();
   };
 const displayGuessTracker = () => {
+    if(chosenWord.replace(/\s/g, "").length <= 6){
+        maxWrong = 3
+      }else if(chosenWord.replace(/\s/g, "").length > 6 && chosenWord.replace(/\s/g, "").length <= 15){
+        maxWrong = 5
+      }else{
+        maxWrong = 7
+      }
     guessTracker.innerHTML = `<p><strong>Wrong Guesses:</strong> <span>${wrongLetters.length}</span> of ${maxWrong}</p>`
 }
 //#endregion
@@ -167,6 +175,21 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+submitButton.onclick = function(e){
+    let typedGuess = document.getElementById('typed-guess').value;
+    let filteredGuess = typedGuess.replace(/\s/g, "").toUpperCase();
+    let filteredWord = chosenWord.replace(/\s/g, "")
+    console.log(filteredGuess)
+    console.log(filteredWord)
+    modal.style.display = 'none';
+    if (filteredWord == filteredGuess) {
+        showWin();
+        }else{
+        wrongLetters.push(filteredGuess);
+        displayGuessTracker();
+        }
+
+   }
 //#endregion
 
 //#region Generate word 
@@ -184,6 +207,7 @@ const chooseWord = (topicValue) => {
   guessTracker.classList.remove('hide');
   modalContainer.classList.remove('hide');
   userInputSection.innerText = "";
+  displayGuessTracker()
 
   let topicArray = topics[topicValue];
   //randomly select word
@@ -252,16 +276,7 @@ const initiateGame = () => {
       if (!chosenWord.includes(e.target.innerText)) {
         wrongLetters.push(button.innerText);
       }
-      if(displayWord.replace(/\s/g, "").length <= 6){
-        maxWrong = 3
-        displayGuessTracker()
-      }else if(displayWord.replace(/\s/g, "").length > 6 && displayWord.replace(/\s/g, "").length <= 15){
-        maxWrong = 5
-        displayGuessTracker()
-      }else{
-        maxWrong = 7
-        displayGuessTracker()
-      }
+      displayGuessTracker()
       if(wrongLetters.length == maxWrong){
         showLoss()
       }

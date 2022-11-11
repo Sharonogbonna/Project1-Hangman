@@ -59,12 +59,14 @@ body{
 }
 #topics-cont button:hover{
     background-color: orange;
+    cursor: pointer;
 }
 #topics-cont button:disabled{
     border: 2px solid tan;
     color: rgb(169, 184, 169);
     background-color: #ffffff;
     box-shadow: none;
+    cursor: inherit;
 }
 #topics-cont button.active{
     border: 3px dashed rgb(4, 37, 4);
@@ -95,12 +97,14 @@ body{
 }
 #letter-cont button:hover{
     background-color: orange;
+    cursor: pointer;
 }
 #letter-cont button:disabled{
     border: 1px dashed tan;
     color: rgb(169, 184, 169);
     background-color: #ffffff;
     box-shadow: none;
+    cursor:inherit;
 }
 #letter-cont button:disabled.inWord{
     background-color: rgb(169, 184, 169);
@@ -117,6 +121,11 @@ body{
     color: rgb(177, 140, 91);
     border-radius: 1em;
     box-shadow: 0 .25em .25em rgb(83, 71, 57); 
+}
+#guess-button:hover,
+#guess-button:focus{
+    background-color: orange;
+    cursor: pointer;
 }
 .newgame-popup{
     background-color: #ffffff;
