@@ -161,7 +161,7 @@ display: none;
     margin: .5em 0 1em 0;
     color:rgb(4, 37, 4);
 }
-#myBtn{
+#guess-button{
     padding: .5em .5em;
     background-color: #ffffff;
     border: 2px solid rgb(177, 140, 91);
@@ -179,28 +179,49 @@ display: none;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
   
   /* Modal Content/Box */
   .modal-content {
-    background-color: #fefefe;
+    border-radius: 1em;
+    background-color: wheat;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    border: 1px solid rgb(169, 184, 169);
+    width: 90%; /* Could be more or less, depending on screen size */
   }
-  
+.typed-guess{
+    width: 75%;
+    padding: 10px;
+    border-radius: 1em;
+    font-size: 18px;
+    border: 3px dotted rgb(169, 184, 169);
+}
+.modal-text{
+    text-align: center;
+    font-size: 25px;
+    color: rgb(152, 117, 84);
+    margin-bottom: 10px;
+}
+.submit-button{
+    width: 20%;
+    padding: 5px 10px;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: rgb(152, 117, 84);
+    border-radius: .25em;
+    border: 1px solid rgb(4, 37, 4);
+    box-shadow: 0 .125em .25em rgb(83, 71, 57);
+}
   /* The Close Button */
   .close {
-    color: #aaa;
+    color: rgb(83, 71, 57);
     float: right;
     font-size: 28px;
     font-weight: bold;
   }
-  
   .close:hover,
   .close:focus {
     color: black;

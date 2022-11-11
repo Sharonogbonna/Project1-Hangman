@@ -20,13 +20,15 @@
         <div id="user-input-sec"></div>
         <div id="letter-cont" class="letters-cont hide"></div>
         <!-- Trigger/Open The Modal -->
-    <button id="myBtn">Guess Word</button>
+    <button id="guess-button">Guess Word</button>
     <!-- The Modal -->
     <div id="myModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Some text in the Modal..</p>
+        <p class="modal-text">Think You've Got it?</p>
+        <input type="text" class="typed-guess" id="typed-guess" placeholder="Guess Your Word"required="">
+        <button id="submit" type="submit" class="submit-button data-toggle="modal" data-target="#modalForm">Submit</button>
     </div>
 
     </div>
