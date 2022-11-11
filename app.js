@@ -5,9 +5,10 @@ const topicsContainer = document.getElementById("topics-cont");
 const userInputSection = document.getElementById("user-input-sec");
 const newGameContainer = document.getElementById("newgame-cont");
 const newGameButton = document.getElementById("newgame-button");
-const canvas = document.getElementById("canvas");
 const resultText = document.getElementById("results");
 const guessTracker = document.getElementById("guess-tracker");
+const body = document.getElementsByTagName('BODY')
+
 
 //Topic options for the game
 let topics = {
@@ -42,7 +43,25 @@ let topics = {
     "Bench  Scraper",
     "Sifter",
   ],
-  //   holiday: []
+  holidays: ['christmas',
+  'candy  canes',
+  'thanksgiving',
+  'chimney',
+  'cookies', 
+  'santa',
+  'kwanza',
+  'hanukkah',
+  'bells',
+  'bethlehem', 
+  'angels',
+  'egg  nog',
+  'mistletoe',
+  'New  Year',
+  'turkey',
+  'snowflakes',
+  'winter',
+  'wrapping  paper'
+]
 };
 
 //other declarations
@@ -59,7 +78,7 @@ const displayTopicButtons = () => {
   topicsContainer.innerHTML += `<p>Please Select a Topic</p>`;
   let topicCont = document.createElement("div");
   for (let topic in topics) {
-    topicCont.innerHTML += `<button id="${topic}"class="topics" onclick="chooseWord('${topic}')">${topic}</button>`;
+    topicCont.innerHTML += `<button class="topics" id="${topic}" onclick="chooseWord('${topic}')">${topic}</button>`;
   }
   topicsContainer.appendChild(topicCont);
 };
@@ -94,6 +113,39 @@ const showLoss = () => {
 const displayGuessTracker = () => {
     guessTracker.innerHTML = `<p><strong>Wrong Guesses:</strong> <span>${wrongLetters.length}</span> of ${maxWrong}</p>`
 }
+//#endregion
+
+//#region Themes
+
+const convertHolidayTheme = () =>{
+    document.body.style.backgroundImage = "url('./images/candycanes.png')";
+    document.body.style.backgroundSize = '100px 100px';
+    let title = document.querySelector('.title')
+    title.style.color = '#eb3543';
+    let container = document.querySelector('.container');
+    container.style.background = '#ffffff';
+    container.style.borderColor = '#eb3543';
+    const letterCollection = lettersContainer.children;
+    for (let i = 0; i < letterCollection.length; i++) {
+  letterCollection[i].style.backgroundColor = '#549a3f'
+  ;
+}
+} 
+const resetTheme = () => {
+    document.body.style.backgroundImage = '';
+    document.body.style.backgroundSize = '';
+    let title = document.querySelector('.title')
+    title.style.color = '';
+    let container = document.querySelector('.container');
+    container.style.background = '';
+    container.style.borderColor = '';
+    const letterCollection = lettersContainer.children;
+    for (let i = 0; i < letterCollection.length; i++) {
+  letterCollection[i].style.backgroundColor = ''
+}
+}
+
+
 //#endregion
 
 //#region Generate word 
@@ -137,6 +189,7 @@ const initiateGame = () => {
   newGameContainer.classList.add("hide");
   lettersContainer.classList.add("hide");
   guessTracker.classList.add('hide');
+  resetTheme();
   //creating letter buttons
   for (let i = 65; i < 91; i++) {
     let button = document.createElement("button");
@@ -195,7 +248,31 @@ const initiateGame = () => {
     lettersContainer.append(button);
   }
   displayTopicButtons();
+let holidayButton = document.getElementById('holidays');
+holidayButton.addEventListener('click', convertHolidayTheme)
 };
 //#endregion
 newGameButton.addEventListener("click", initiateGame);
 window.onload = initiateGame;
+
+// Get the modal
+let modal = document.getElementById("myModal");
+// Get the button that opens the modal
+let btn = document.getElementById("myBtn");
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}

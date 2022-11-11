@@ -19,7 +19,7 @@ body{
     top: 50%;
     left: 50%;
     padding: 3em;
-    border: 2px solid orange;
+    border: 3px solid orange;
     border-radius: .5em;
     box-shadow: 0 1em 2em .5em rgb(1, 12, 1);
 }
@@ -35,7 +35,7 @@ body{
 .title{
     color: orange; 
     text-align: center;
-    font-family: fantasy;
+    /* font-family: fantasy; */
     font-size: 45px;
 }
 #topics-cont{
@@ -47,6 +47,7 @@ body{
     justify-content: space-evenly;
     margin: 1em 0 2em 0;
 }
+
 #topics-cont button{
     padding: .5em 1em;
     text-transform: capitalize;
@@ -72,7 +73,6 @@ body{
     box-shadow: none;
     font-weight: bold;
 }
-
 .letters-cont{
     width: 100%;
     display: flex;
@@ -154,7 +154,6 @@ body{
 .hide{
 display: none;
 }
-
 #user-input-sec{
     display: flex;
     justify-content: center;
@@ -162,3 +161,49 @@ display: none;
     margin: .5em 0 1em 0;
     color:rgb(4, 37, 4);
 }
+#myBtn{
+    padding: .5em .5em;
+    background-color: #ffffff;
+    border: 2px solid rgb(177, 140, 91);
+    color: rgb(177, 140, 91);
+    border-radius: 1em;
+    box-shadow: 0 .25em .25em rgb(83, 71, 57); 
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }

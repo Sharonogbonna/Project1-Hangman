@@ -10,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <title>Hangman</title>
+    <title>Word Guess</title>
 </head>
 <body>
     <div class="container">
@@ -19,7 +19,17 @@
         <div id="topics-cont"></div>
         <div id="user-input-sec"></div>
         <div id="letter-cont" class="letters-cont hide"></div>
-        <canvas id="canvas"></canvas>
+        <!-- Trigger/Open The Modal -->
+    <button id="myBtn">Guess Word</button>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+    </div>
+
+    </div>
         <div id="newgame-cont" class="newgame-popup hide">
             <div id="results"></div>
             <button id="newgame-button">New Game</button>
