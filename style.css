@@ -79,6 +79,7 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     gap: .5em;
+    margin-bottom: 50px;
 }
 #letter-cont button{
     height: 2.5em;
@@ -105,6 +106,17 @@ body{
     background-color: rgb(169, 184, 169);
     color: #ffffff;
     box-shadow: none;
+}
+#guess-button{
+    display: block;
+    padding: .5em 1em;
+    margin-top: 50px;
+    margin: auto;
+    background-color: #ffffff;
+    border: 2px solid rgb(177, 140, 91);
+    color: rgb(177, 140, 91);
+    border-radius: 1em;
+    box-shadow: 0 .25em .25em rgb(83, 71, 57); 
 }
 .newgame-popup{
     background-color: #ffffff;
@@ -161,14 +173,6 @@ display: none;
     margin: .5em 0 1em 0;
     color:rgb(4, 37, 4);
 }
-#guess-button{
-    padding: .5em .5em;
-    background-color: #ffffff;
-    border: 2px solid rgb(177, 140, 91);
-    color: rgb(177, 140, 91);
-    border-radius: 1em;
-    box-shadow: 0 .25em .25em rgb(83, 71, 57); 
-}
 
 /* The Modal (background) */
 .modal {
@@ -214,6 +218,7 @@ display: none;
     border-radius: .25em;
     border: 1px solid rgb(4, 37, 4);
     box-shadow: 0 .125em .25em rgb(83, 71, 57);
+    margin-left: 15px;
 }
   /* The Close Button */
   .close {
@@ -221,6 +226,8 @@ display: none;
     float: right;
     font-size: 28px;
     font-weight: bold;
+    margin-top: -.7em;
+    margin-right: -5px;
   }
   .close:hover,
   .close:focus {

@@ -8,6 +8,10 @@ const newGameButton = document.getElementById("newgame-button");
 const resultText = document.getElementById("results");
 const guessTracker = document.getElementById("guess-tracker");
 const body = document.getElementsByTagName('BODY')
+const modalContainer = document.getElementById('modal-cont')
+let modal = document.getElementById("myModal");
+let btn = document.getElementById("guess-button");
+let span = document.getElementsByClassName("close")[0];
 
 
 //Topic options for the game
@@ -95,6 +99,7 @@ const blocker = () => {
   letterButtons.forEach(function (button) {
     button.disabled.true;
   });
+  btn.disabled.true;
   newGameContainer.classList.remove("hide");
 };
 //#endregion
@@ -144,8 +149,24 @@ const resetTheme = () => {
   letterCollection[i].style.backgroundColor = ''
 }
 }
+//#endregion
 
+//#region modal
 
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 //#endregion
 
 //#region Generate word 
@@ -161,6 +182,7 @@ const chooseWord = (topicValue) => {
   //unhide all letters once the topic is chosen
   lettersContainer.classList.remove("hide");
   guessTracker.classList.remove('hide');
+  modalContainer.classList.remove('hide');
   userInputSection.innerText = "";
 
   let topicArray = topics[topicValue];
@@ -189,6 +211,7 @@ const initiateGame = () => {
   newGameContainer.classList.add("hide");
   lettersContainer.classList.add("hide");
   guessTracker.classList.add('hide');
+  modalContainer.classList.add('hide');
   resetTheme();
   //creating letter buttons
   for (let i = 65; i < 91; i++) {
@@ -254,25 +277,3 @@ holidayButton.addEventListener('click', convertHolidayTheme)
 //#endregion
 newGameButton.addEventListener("click", initiateGame);
 window.onload = initiateGame;
-
-// Get the modal
-let modal = document.getElementById("myModal");
-// Get the button that opens the modal
-let btn = document.getElementById("guess-button");
-// Get the <span> element that closes the modal
-let span = document.getElementsByClassName("close")[0];
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
