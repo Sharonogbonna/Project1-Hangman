@@ -7,13 +7,13 @@ const newGameContainer = document.getElementById("newgame-cont");
 const newGameButton = document.getElementById("newgame-button");
 const resultText = document.getElementById("results");
 const guessTracker = document.getElementById("guess-tracker");
-const body = document.getElementsByTagName('BODY')
-const modalContainer = document.getElementById('modal-cont')
+const body = document.getElementsByTagName("BODY");
+const modalContainer = document.getElementById("modal-cont");
 let modal = document.getElementById("myModal");
 let btn = document.getElementById("guess-button");
 let span = document.getElementsByClassName("close")[0];
-let submitButton = document.getElementById('submit')
-
+let submitButton = document.getElementById("submit");
+let typedGuess = document.getElementById("typed-guess")
 
 //Topic options for the game
 let topics = {
@@ -48,25 +48,26 @@ let topics = {
     "Bench  Scraper",
     "Sifter",
   ],
-  holidays: ['christmas',
-  'candy  canes',
-  'thanksgiving',
-  'chimney',
-  'cookies', 
-  'santa',
-  'kwanza',
-  'hanukkah',
-  'bells',
-  'bethlehem', 
-  'angels',
-  'egg  nog',
-  'mistletoe',
-  'New  Year',
-  'turkey',
-  'snowflakes',
-  'winter',
-  'wrapping  paper'
-]
+  holidays: [
+    "christmas",
+    "candy  canes",
+    "thanksgiving",
+    "chimney",
+    "cookies",
+    "santa",
+    "kwanza",
+    "hanukkah",
+    "bells",
+    "bethlehem",
+    "angels",
+    "egg  nog",
+    "mistletoe",
+    "New  Year",
+    "turkey",
+    "snowflakes",
+    "winter",
+    "wrapping  paper",
+  ],
 };
 
 //other declarations
@@ -75,7 +76,7 @@ let guessedLetters = [];
 let wrongLetters = [];
 let displayWord = null;
 let winCount = 0;
-let maxWrong = null
+let maxWrong = null;
 //#endregion
 
 //#region Display topics and blocker
@@ -107,92 +108,90 @@ const blocker = () => {
 
 //#region Show win, loss, and number of wrong guess
 const showLoss = () => {
-    console.log("You Lose!");
-    resultText.innerHTML = `<h2 class="lose-msg"> You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`;
-    blocker();
-  };
-  const showWin = () => {
-    console.log("You Win!");
-    resultText.innerHTML = `<h2 class="win-msg"> You win!!</h2><p>The word was <span>${chosenWord}</span></p>`;
-    blocker();
-  };
+  console.log("You Lose!");
+  resultText.innerHTML = `<h2 class="lose-msg"> You Lose!!</h2><p>The word was <span>${chosenWord}</span></p>`;
+  blocker();
+};
+const showWin = () => {
+  console.log("You Win!");
+  resultText.innerHTML = `<h2 class="win-msg"> You win!!</h2><p>The word was <span>${chosenWord}</span></p>`;
+  blocker();
+};
 const displayGuessTracker = () => {
-    if(chosenWord.replace(/\s/g, "").length <= 6){
-        maxWrong = 3
-      }else if(chosenWord.replace(/\s/g, "").length > 6 && chosenWord.replace(/\s/g, "").length <= 15){
-        maxWrong = 5
-      }else{
-        maxWrong = 7
-      }
-    guessTracker.innerHTML = `<p><strong>Wrong Guesses:</strong> <span>${wrongLetters.length}</span> of ${maxWrong}</p>`
-}
+  if (chosenWord.replace(/\s/g, "").length <= 6) {
+    maxWrong = 3;
+  } else if (
+    chosenWord.replace(/\s/g, "").length > 6 &&
+    chosenWord.replace(/\s/g, "").length <= 15
+  ) {
+    maxWrong = 5;
+  } else {
+    maxWrong = 7;
+  }
+  guessTracker.innerHTML = `<p><strong>Wrong Guesses:</strong> <span>${wrongLetters.length}</span> of ${maxWrong}</p>`;
+};
 //#endregion
 
 //#region Themes
 
-const convertHolidayTheme = () =>{
-    document.body.style.backgroundImage = "url('./images/candycanes.png')";
-    document.body.style.backgroundSize = '100px 100px';
-    let title = document.querySelector('.title')
-    title.style.color = '#eb3543';
-    let container = document.querySelector('.container');
-    container.style.background = '#ffffff';
-    container.style.borderColor = '#eb3543';
-    const letterCollection = lettersContainer.children;
-    for (let i = 0; i < letterCollection.length; i++) {
-  letterCollection[i].style.backgroundColor = '#549a3f'
-  ;
-}
-} 
+const convertHolidayTheme = () => {
+  document.body.style.backgroundImage = "url('./images/candycanes.png')";
+  document.body.style.backgroundSize = "100px 100px";
+  let title = document.querySelector(".title");
+  title.style.color = "#eb3543";
+  let container = document.querySelector(".container");
+  container.style.background = "#ffffff";
+  container.style.borderColor = "#eb3543";
+  const letterCollection = lettersContainer.children;
+  for (let i = 0; i < letterCollection.length; i++) {
+    letterCollection[i].style.backgroundColor = "#549a3f";
+  }
+};
 const resetTheme = () => {
-    document.body.style.backgroundImage = '';
-    document.body.style.backgroundSize = '';
-    let title = document.querySelector('.title')
-    title.style.color = '';
-    let container = document.querySelector('.container');
-    container.style.background = '';
-    container.style.borderColor = '';
-    const letterCollection = lettersContainer.children;
-    for (let i = 0; i < letterCollection.length; i++) {
-  letterCollection[i].style.backgroundColor = ''
-}
-}
+  document.body.style.backgroundImage = "";
+  document.body.style.backgroundSize = "";
+  let title = document.querySelector(".title");
+  title.style.color = "";
+  let container = document.querySelector(".container");
+  container.style.background = "";
+  container.style.borderColor = "";
+  const letterCollection = lettersContainer.children;
+  for (let i = 0; i < letterCollection.length; i++) {
+    letterCollection[i].style.backgroundColor = "";
+  }
+};
 //#endregion
 
 //#region modal
-
 // When the user clicks on the button, open the modal
-btn.onclick = function() {
+btn.onclick = function () {
   modal.style.display = "block";
-}
+};
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = "none";
-}
+};
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-}
-submitButton.onclick = function(e){
-    let typedGuess = document.getElementById('typed-guess').value;
-    let filteredGuess = typedGuess.replace(/\s/g, "").toUpperCase();
-    let filteredWord = chosenWord.replace(/\s/g, "")
-    console.log(filteredGuess)
-    console.log(filteredWord)
-    modal.style.display = 'none';
-    if (filteredWord == filteredGuess) {
-        showWin();
-        }else{
-        wrongLetters.push(filteredGuess);
-        displayGuessTracker();
-        }
-
-   }
+};
+submitButton.onclick = function (e) {
+  let filteredGuess = typedGuess.value.replace(/\s/g, "").toUpperCase();
+  let filteredWord = chosenWord.replace(/\s/g, "");
+  modal.style.display = "none";
+  if (filteredWord == filteredGuess) {
+    showWin();
+  } else {
+    wrongLetters.push(filteredGuess);
+    displayGuessTracker();
+    typedGuess.value = ''
+  }
+};
 //#endregion
 
-//#region Generate word 
+//#region Generate word
 //generate word for topic selected
 const chooseWord = (topicValue) => {
   let topicButtons = document.querySelectorAll(".topics");
@@ -204,10 +203,10 @@ const chooseWord = (topicValue) => {
   });
   //unhide all letters once the topic is chosen
   lettersContainer.classList.remove("hide");
-  guessTracker.classList.remove('hide');
-  modalContainer.classList.remove('hide');
+  guessTracker.classList.remove("hide");
+  modalContainer.classList.remove("hide");
   userInputSection.innerText = "";
-  displayGuessTracker()
+  displayGuessTracker();
 
   let topicArray = topics[topicValue];
   //randomly select word
@@ -231,11 +230,12 @@ const initiateGame = () => {
   userInputSection.innerHTML = "";
   topicsContainer.innerHTML = "";
   lettersContainer.innerHTML = "";
-  guessTracker.innerHTML = '';
+  guessTracker.innerHTML = "";
+  typedGuess.value = ''
   newGameContainer.classList.add("hide");
   lettersContainer.classList.add("hide");
-  guessTracker.classList.add('hide');
-  modalContainer.classList.add('hide');
+  guessTracker.classList.add("hide");
+  modalContainer.classList.add("hide");
   resetTheme();
   //creating letter buttons
   for (let i = 65; i < 91; i++) {
@@ -244,7 +244,7 @@ const initiateGame = () => {
     button.innerText = String.fromCharCode(i);
     button.addEventListener("click", function (e) {
       guessedLetters.push(button.innerText);
-    //updating word as letter are correctly guessed
+      //updating word as letter are correctly guessed
       displayWord = "";
       winCount = 0;
       for (let i = 0; i < chosenWord.length; i++) {
@@ -276,9 +276,9 @@ const initiateGame = () => {
       if (!chosenWord.includes(e.target.innerText)) {
         wrongLetters.push(button.innerText);
       }
-      displayGuessTracker()
-      if(wrongLetters.length == maxWrong){
-        showLoss()
+      displayGuessTracker();
+      if (wrongLetters.length == maxWrong) {
+        showLoss();
       }
       userInputSection.innerHTML = displayWord;
       button.disabled = true;
@@ -286,8 +286,8 @@ const initiateGame = () => {
     lettersContainer.append(button);
   }
   displayTopicButtons();
-let holidayButton = document.getElementById('holidays');
-holidayButton.addEventListener('click', convertHolidayTheme)
+  let holidayButton = document.getElementById("holidays");
+  holidayButton.addEventListener("click", convertHolidayTheme);
 };
 //#endregion
 newGameButton.addEventListener("click", initiateGame);
