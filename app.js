@@ -310,8 +310,7 @@ const initiateGame = () => {
     button.classList.add("letters");
     char = String.fromCharCode(i);
     button.innerText = char
-    // button.setAttribute('id', char)
-    // button.keyCode = `${i}`
+    //button.key = char
     button.addEventListener("click", function (e) {
       updateWord(button);
       setWinCondition();
@@ -320,25 +319,36 @@ const initiateGame = () => {
       }
       displayGuessTracker();
       showLoss();
-      // e.key = `${i}`
-      // console.log(e.keyCode)
-      // console.log(button.key)
-      // console.log(e.code)
       });
-      
-    // button.onkeydown = function(e){
-    //   e.key == button.key
-    //   console.log(e.key)
-      // updateWord(button);
-      // setWinCondition();
-      // if (!chosenWord.includes(e.target.innerText)) {
-      //   wrongLetters.push(button.innerText);
-      // }
-      // displayGuessTracker();
-      // showLoss();
-    // }
     lettersContainer.append(button);
   }
+  document.addEventListener('keyup', function(e){
+    char = String.fromCharCode(`${e.which}`);
+    e.letter = `${char}`;
+    console.log(e)
+    guessedLetters.push(e.letter);
+      //updating word as letter are correctly guessed
+      displayWord = "";
+      winCount = 0;
+      for (let i = 0; i < chosenWord.length; i++) {
+        if (guessedLetters.includes(chosenWord[i])) {
+          displayWord += chosenWord[i];
+          winCount += 1;
+        } else if (chosenWord[i] === " ") {
+          displayWord += " ";
+        } else {
+          displayWord += "_";
+        }
+      }
+      userInputSection.innerHTML = displayWord;
+    setWinCondition();
+    if (!chosenWord.includes(e.letter)) {
+      wrongLetters.push(e.letter);
+    }
+    console.log(wrongLetters)
+    displayGuessTracker();
+    showLoss();
+  })
   displayTopicButtons();
   let holidayButton = document.getElementById("christmas");
   holidayButton.addEventListener("click", convertHolidayTheme);

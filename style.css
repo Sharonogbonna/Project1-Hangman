@@ -23,7 +23,40 @@ body{
     border-radius: .5em;
     box-shadow: 0 1em 2em .5em rgb(1, 12, 1);
 }
-
+#volume-control{
+   display: block;
+   margin-left: auto;
+}
+input[type="range"] {
+    -webkit-appearance: none;
+    margin-right: 15px;
+    width: 80px;
+    height: 7px;
+    background:  rgb(169, 184, 169, 0.6);
+    border-radius: 5px;
+    background-image: linear-gradient(rgb(177, 140, 91), rgb(83, 71, 57));
+    /* background-size: 70% 100%; */
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+  }
+  
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 7px;
+    /* border-radius: 50%; */
+    background: rgb(152, 117, 84);
+    cursor: ew-resize;
+    box-shadow: 0 0 2px 0 #555;
+    transition: background .3s ease-in-out;
+  }
+  
+  input[type=range]::-webkit-slider-runnable-track  {
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+  }
 #guess-tracker{
     text-align: right;
     margin-bottom: 20px;
