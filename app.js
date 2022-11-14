@@ -27,26 +27,52 @@ let topics = {
     "Central  Nervous  System",
     "Brain",
     "Pia  Mater",
+    "dura  mater",
+    "arachnoid  mater",
     "Amygdala",
     "Soma",
     "Blood  Brain  Barrier",
     "Myelin Sheath",
+    "Peripheral  Nervous  System", 
+    "Spinal  Cord", 
+    "Nerves",
+    "Occipital  lobe", 
+    "Temporal  lobe", 
+    "Parietal  lobe",
+    "frontal  lobe",
+    "brain  stem",
+    "Cerebellum", 
+    "corpus  callosum",
+    "Brocas  Area", 
+    "Wernickes  area", 
+    "gyrus",
+    "sulcus", 
+    "hypothalamus", 
+    "hippocampus", 
+    "medulla", 
+    "Basal  Ganglia", 
+    "Limbic  System", 
+    "Neurotransmitter"
   ],
   cooking: [
     "Spatula",
     "Sauce  Pan",
-    "Pot",
-    "Tongs",
+    "Julienne",
+    "Al  Dente",
     "Ladle",
     "Chefs  Knife",
     "Cutting  Board",
     "Cheese  Grater",
     "Peeler",
     "Tenderizer",
-    "Pizza  Cutter",
+    "Boil",
     "Mezzaluna",
     "Bench  Scraper",
-    "Sifter",
+    "Simmer",
+    "Whisk", 
+    "Tongs",
+    "Saute",
+    "Braise"
   ],
   christmas: [
     "christmas",
@@ -189,6 +215,33 @@ const resetTheme = () => {
 // When the user clicks on the button, open the modal
 btn.onclick = function () {
   modal.style.display = "block";
+  // document.removeEventListener('keyup', function(e){
+  //   char = String.fromCharCode(`${e.which}`);
+  //   e.letter = `${char}`;
+  //   console.log(e)
+  //   guessedLetters.push(e.letter);
+  //     //updating word as letter are correctly guessed
+  //     displayWord = "";
+  //     winCount = 0;
+  //     for (let i = 0; i < chosenWord.length; i++) {
+  //       if (guessedLetters.includes(chosenWord[i])) {
+  //         displayWord += chosenWord[i];
+  //         winCount += 1;
+  //       } else if (chosenWord[i] === " ") {
+  //         displayWord += " ";
+  //       } else {
+  //         displayWord += "_";
+  //       }
+  //     }
+  //     userInputSection.innerHTML = displayWord;
+  //   setWinCondition();
+  //   if (!chosenWord.includes(e.letter)) {
+  //     wrongLetters.push(e.letter);
+  //   }
+  //   console.log(wrongLetters)
+  //   displayGuessTracker();
+  //   showLoss();
+  // })
 };
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
@@ -322,33 +375,33 @@ const initiateGame = () => {
       });
     lettersContainer.append(button);
   }
-  document.addEventListener('keyup', function(e){
-    char = String.fromCharCode(`${e.which}`);
-    e.letter = `${char}`;
-    console.log(e)
-    guessedLetters.push(e.letter);
-      //updating word as letter are correctly guessed
-      displayWord = "";
-      winCount = 0;
-      for (let i = 0; i < chosenWord.length; i++) {
-        if (guessedLetters.includes(chosenWord[i])) {
-          displayWord += chosenWord[i];
-          winCount += 1;
-        } else if (chosenWord[i] === " ") {
-          displayWord += " ";
-        } else {
-          displayWord += "_";
-        }
-      }
-      userInputSection.innerHTML = displayWord;
-    setWinCondition();
-    if (!chosenWord.includes(e.letter)) {
-      wrongLetters.push(e.letter);
-    }
-    console.log(wrongLetters)
-    displayGuessTracker();
-    showLoss();
-  })
+  // document.addEventListener('keyup', function(e){
+  //   char = String.fromCharCode(`${e.which}`);
+  //   e.letter = `${char}`;
+  //   console.log(e)
+  //   guessedLetters.push(e.letter);
+  //     //updating word as letter are correctly guessed
+  //     displayWord = "";
+  //     winCount = 0;
+  //     for (let i = 0; i < chosenWord.length; i++) {
+  //       if (guessedLetters.includes(chosenWord[i])) {
+  //         displayWord += chosenWord[i];
+  //         winCount += 1;
+  //       } else if (chosenWord[i] === " ") {
+  //         displayWord += " ";
+  //       } else {
+  //         displayWord += "_";
+  //       }
+  //     }
+  //     userInputSection.innerHTML = displayWord;
+  //   setWinCondition();
+  //   if (!chosenWord.includes(e.letter)) {
+  //     wrongLetters.push(e.letter);
+  //   }
+  //   console.log(wrongLetters)
+  //   displayGuessTracker();
+  //   showLoss();
+  // })
   displayTopicButtons();
   let holidayButton = document.getElementById("christmas");
   holidayButton.addEventListener("click", convertHolidayTheme);
