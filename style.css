@@ -2,13 +2,20 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Lora', serif;
 }
 body{
     background-color: rgb(4, 37, 4);
     margin-right: 50px;
     margin-left: 50px;
+    font-family: 'Lora', serif;
 }
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+   }
+
 .container{
     font-size: 18px;
     background-color: wheat;
@@ -22,10 +29,6 @@ body{
     border: 3px solid orange;
     border-radius: .5em;
     box-shadow: 0 1em 2em .5em rgb(1, 12, 1);
-}
-#volume-control{
-   display: block;
-   margin-left: auto;
 }
 input[type="range"] {
     -webkit-appearance: none;
@@ -57,6 +60,10 @@ input[type="range"] {
     border: none;
     background: transparent;
   }
+  #volume-control{
+    display: block;
+    margin-left: auto;
+ }
 #guess-tracker{
     text-align: right;
     margin-bottom: 20px;
@@ -68,8 +75,8 @@ input[type="range"] {
 .title{
     color: orange; 
     text-align: center;
-    /* font-family: fantasy; */
     font-size: 45px;
+    margin-bottom: 30px;
 }
 #topics-cont{
     text-align: center;
@@ -89,6 +96,7 @@ input[type="range"] {
     color: rgb(177, 140, 91);
     border-radius: 1em;
     box-shadow: 0 .25em .25em rgb(83, 71, 57);
+    font-size: 15px;
 }
 #topics-cont button:hover{
     background-color: orange;
@@ -100,25 +108,26 @@ input[type="range"] {
     background-color: #ffffff;
     box-shadow: none;
     cursor: inherit;
+    font-size: 11px;
 }
 #topics-cont button.active{
     border: 3px dashed rgb(4, 37, 4);
     background-color: rgb(152, 117, 84);
     color:#ffffff;
     box-shadow: none;
-    font-weight: bold;
+    font-size: 15px;
 }
 .letters-cont{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: .5em;
+    gap: .6em;
     margin-bottom: 50px;
 }
 #letter-cont button{
-    height: 2.5em;
-    width: 2.5em;
+    height: 3em;
+    width: 3em;
     color: #ffffff;
     background-color: rgb(152, 117, 84);
     border-radius: .25em;
@@ -211,7 +220,7 @@ display: none;
 #user-input-sec{
     display: flex;
     justify-content: center;
-    font-size: 1.8em;
+    font-size: 2.5em;
     margin: .5em 0 1em 0;
     color:rgb(4, 37, 4);
 }
@@ -236,7 +245,7 @@ display: none;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid rgb(169, 184, 169);
-    width: 90%; /* Could be more or less, depending on screen size */
+    width: 90%; 
   }
 .typed-guess{
     width: 75%;
