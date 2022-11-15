@@ -108,10 +108,11 @@ let backgroundMusic = null
 
 //audio things
 let defaultMusic = new Audio('./audio/lofi-study-112191.mp3');
-let christmasMusic = new Audio('./audio/christmas-knocking-to-the-door.mp3')
-let cheersSound = new Audio('./audio/cheering.wav')
-let laughSound = new Audio('./audio/laughter.wav')
+let christmasMusic = new Audio('./audio/christmas-knocking-to-the-door.mp3');
+let cheersSound = new Audio('./audio/cheering.wav');
+let laughSound = new Audio('./audio/laughter.wav');
 let volume = document.querySelector("#volume-control");
+
 volume.addEventListener("input", function(e) {
 defaultMusic.volume = e.currentTarget.value / 100;
 christmasMusic.volume = e.currentTarget.value / 100;
@@ -163,7 +164,9 @@ const showWin = () => {
   blocker();
 };
 const displayGuessTracker = () => {
-  if (chosenWord.replace(/\s/g, "").length <= 6) {
+  if (chosenWord.replace(/\s/g, "").length <= 0){
+    maxWrong = ''
+  }else if (chosenWord.replace(/\s/g, "").length <= 6) {
     maxWrong = 3;
   } else if (
     chosenWord.replace(/\s/g, "").length > 6 &&
@@ -189,7 +192,9 @@ const convertHolidayTheme = () => {
   volume.style.color = "#eb3543";
   const letterCollection = lettersContainer.children;
   for (let i = 0; i < letterCollection.length; i++) {
-    letterCollection[i].style.backgroundColor = "#549a3f";
+    if (letterCollection[i].disabled == true){
+      letterCollection[i].style.backgroundColor = "#549a3f";
+    }
   }
   backgroundMusic.pause()
   christmasMusic.play()
@@ -226,7 +231,7 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
-submitButton.onclick = function (e) {
+const submitButtonFunction = () => {
   let filteredGuess = typedGuess.value.replace(/\s/g, "").toUpperCase();
   let filteredWord = chosenWord.replace(/\s/g, "");
   modal.style.display = "none";
@@ -238,6 +243,13 @@ submitButton.onclick = function (e) {
     typedGuess.value = ''
   }
 };
+submitButton.addEventListener('click', submitButtonFunction);
+  document.addEventListener('keyup', function(e){
+    if(e.key === 'Enter'){
+      submitButtonFunction();
+    };
+  });
+
 //#endregion
 
 //#region Generate word for topic selected
@@ -254,13 +266,11 @@ const chooseWord = (topicValue) => {
   lettersContainer.classList.remove("hide");
   guessTracker.classList.remove("hide");
   modalContainer.classList.remove("hide");
-  volume.classList.remove("hide")
+  volume.style.display = 'block';
   userInputSection.innerText = "";
   displayGuessTracker();
-  backgroundMusic.play()
+  backgroundMusic.play();
   
-
-
   let topicArray = topics[topicValue];
   //randomly select word
   chosenWord = topicArray[Math.floor(Math.random() * topicArray.length)];
@@ -326,7 +336,7 @@ const initiateGame = () => {
   lettersContainer.classList.add("hide");
   guessTracker.classList.add("hide");
   modalContainer.classList.add("hide");
-  volume.classList.add('hide');
+  volume.style.display = 'none';
   resetTheme();
   backgroundMusic.pause();
   christmasMusic.pause();
