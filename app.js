@@ -192,9 +192,7 @@ const convertHolidayTheme = () => {
   volume.style.color = "#eb3543";
   const letterCollection = lettersContainer.children;
   for (let i = 0; i < letterCollection.length; i++) {
-    if (letterCollection[i].disabled == true){
       letterCollection[i].style.backgroundColor = "#549a3f";
-    }
   }
   backgroundMusic.pause()
   christmasMusic.play()
@@ -358,34 +356,6 @@ const initiateGame = () => {
       });
     lettersContainer.append(button);
   }
-  // document.addEventListener('keyup', function(e){
-  //   char = String.fromCharCode(`${e.which}`);
-  //   e.letter = `${char}`;
-  //   console.log(e)
-  //   guessedLetters.push(e.letter);
-  //     //updating word as letter are correctly guessed
-  //     displayWord = "";
-  //     winCount = 0;
-  //     for (let i = 0; i < chosenWord.length; i++) {
-  //       if (guessedLetters.includes(chosenWord[i])) {
-  //         displayWord += chosenWord[i];
-  //         winCount += 1;
-  //       } else if (chosenWord[i] === " ") {
-  //         displayWord += " ";
-  //       } else {
-  //         displayWord += "_";
-  //       }
-  //     }
-  //     userInputSection.innerHTML = displayWord;
-  //   setWinCondition();
-  //   if (!chosenWord.includes(e.letter)) {
-  //     wrongLetters.push(e.letter);
-  //   }
-  //   console.log(wrongLetters)
-  //   displayGuessTracker();
-  //   showLoss();
-  // })
-
   displayTopicButtons();
   let holidayButton = document.getElementById("christmas");
   holidayButton.addEventListener("click", convertHolidayTheme);
