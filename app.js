@@ -165,7 +165,7 @@ const showWin = () => {
 };
 const displayGuessTracker = () => {
   if (chosenWord.replace(/\s/g, "").length <= 0){
-    maxWrong = ''
+    maxWrong = 'calculating...'
   }else if (chosenWord.replace(/\s/g, "").length <= 6) {
     maxWrong = 3;
   } else if (
