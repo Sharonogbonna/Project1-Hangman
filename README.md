@@ -14,9 +14,9 @@ To begin guessing the word, click on a letter that you believe to be in the word
 You win the game when you correctly guess the word.
 
 You lose the game when you run out of wrong guesses.  The number of wrong guesses you have is determined by the total number of letters in the randomly generated word. 
-*For items with 6 letters or less, you will have 3 chances.
-*For items with 7 to 15 letters, you will have 5 chances.
-*For items with over 15 letters, you will have 7 chances.
+* For items with 6 letters or less, you will have 3 chances.
+* For items with 7 to 15 letters, you will have 5 chances.
+* For items with over 15 letters, you will have 7 chances.
 
 ##### Features
 There is also a feature to type your guess. This can be useful if you think you may know the word and don't want to click each remaining letter. You can type your guess and click submit to check. If your typed guess is correct than you will win the round. If it is wrong, it will count towards your number of wrong guesses.
