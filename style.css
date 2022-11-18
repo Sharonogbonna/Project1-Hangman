@@ -281,12 +281,12 @@ input[type="range"]::-webkit-slider-thumb {
   text-decoration: none;
   cursor: pointer;
 }
-@media only screen and (min-width: 389px) and (max-width: 768px) {
+@media only screen and (min-width: 360px) and (max-width: 768px) {
   .container {
     display: flex;
     flex-direction: column;
     height: 90vh;
-    padding: 0;
+    padding: 1em;
   }
   #volume-control {
     margin-top: 30px;
@@ -300,12 +300,16 @@ input[type="range"]::-webkit-slider-thumb {
     margin-bottom: 10px;
   }
   #topics-cont div {
-    margin: 1em 0 1em 0;
+    margin: 0em 0 -.75em 0;
+  }
+  #topics-cont button {
+    margin-top: 10px;
   }
   .letters-cont {
-    overflow: hidden;
+    /* overflow: hidden; */
     height: 30%;
     gap: 0.4em;
+    margin-bottom: 30px;
   }
   #user-input-sec {
     font-size: 2.25em;
