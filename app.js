@@ -66,7 +66,7 @@ let topics = {
     "Peeler",
     "Tenderizer",
     "Boil",
-    "Mezzaluna",
+    // "Mezzaluna",
     "Bench  Scraper",
     "Simmer",
     "Whisk",
@@ -167,14 +167,14 @@ const displayGuessTracker = () => {
   if (chosenWord.replace(/\s/g, "").length <= 0) {
     maxWrong = "calculating...";
   } else if (chosenWord.replace(/\s/g, "").length <= 6) {
-    maxWrong = 3;
+    maxWrong = 7;
   } else if (
     chosenWord.replace(/\s/g, "").length > 6 &&
     chosenWord.replace(/\s/g, "").length <= 15
   ) {
     maxWrong = 5;
   } else {
-    maxWrong = 7;
+    maxWrong = 3;
   }
   guessTracker.innerHTML = `<p><strong>Wrong Guesses:</strong> <span>${wrongLetters.length}</span> of ${maxWrong}</p>`;
 };
