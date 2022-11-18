@@ -59,6 +59,6 @@ As I mentioned earlier, this was my first project ever so I am super thankful fo
 
 The CSS and layout of my game was heavily influenced by [The Coding Artist](https://www.youtube.com/watch?v=T6uht1A0114)
  
-Christmas Theme Music by [Lesfm](https://pixabay.com/users/lesfm-22579021/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=11928) from [Pixabay] (https://pixabay.com/music//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=11928)
+Christmas Theme Music by [Lesfm](https://pixabay.com/users/lesfm-22579021/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=11928) from [Pixabay](https://pixabay.com/music//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=11928)
 
-General Background Music by [FASSounds] (https://pixabay.com/users/fassounds-3433550/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=112191)from [Pixabay] (https://pixabay.com/music//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=112191)
+General Background Music by [FASSounds](https://pixabay.com/users/fassounds-3433550/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=112191)from [Pixabay](https://pixabay.com/music//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=112191)
